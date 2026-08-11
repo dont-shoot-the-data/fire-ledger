@@ -81,24 +81,24 @@ h3{font-weight:700; font-size:20px;}
 .race.unkc{color:var(--text-2); font-weight:500;}
 .race.unkc i{background:transparent; border:1.5px dashed var(--muted);}
 
-.vwrap{display:flex; align-items:flex-end; gap:26px; height:306px; padding:6px 8px 0; max-width:660px;}
+.vwrap{display:flex; align-items:flex-end; gap:26px; height:264px; padding:6px 8px 0; max-width:660px;}
 .vcol{flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end;}
 .vnum{font-family:'Playfair Display',Georgia,serif; font-weight:900; font-size:27px; margin-bottom:8px; line-height:1;}
 .vbar{width:100%; max-width:106px; border-radius:8px 8px 3px 3px; transform:scaleY(0); transform-origin:bottom; transition:transform .7s cubic-bezier(.2,.7,.2,1); display:flex; flex-direction:column; overflow:hidden;}
 .vwrap.fired .vbar{transform:scaleY(1);}
 .vseg{width:100%; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; font-weight:700; color:#0a0a0e;}
 .vseg.hyp{color:var(--text); border-bottom:1px dashed rgba(10,10,14,.5);}
-.vlab{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-2); margin-top:10px; text-align:center;}
+.vlab{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-2); margin-top:48px; text-align:center;}
 .vgroup{display:flex; align-items:flex-end; gap:7px; height:100%; justify-content:center;}
-.bcol{display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;}
+.bcol{display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; position:relative;}
 .vshare{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:10px; color:var(--text-2); margin-bottom:6px;}
 .vpct{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; font-weight:700; color:var(--coral); margin-bottom:6px;}
 .vbar.pop{background:rgba(255,69,85,.22); border:1px solid rgba(255,69,85,.5); max-width:44px; border-radius:8px 8px 3px 3px;}
 .split{display:flex; gap:36px; flex-wrap:wrap;}
 .half{flex:1; min-width:290px;}
 .subt{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-2); margin-bottom:14px;}
-.vwrap.sm{height:268px;}
-.btag{margin-top:6px; height:46px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:9px; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; align-self:flex-end; transform:rotate(-32deg); transform-origin:top right; padding-right:2px;}
+.vwrap.sm{height:228px;}
+.btag{position:absolute; top:calc(100% + 4px); right:4px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:9px; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; transform:rotate(-32deg); transform-origin:top right;}
 .btag.s{color:var(--text-2);}
 .btag.p{color:var(--coral); opacity:.9;}
 .leg{display:flex; flex-wrap:wrap; gap:8px 20px; margin:2px 0 16px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:10.5px; color:var(--text-2); letter-spacing:.04em;}
@@ -119,7 +119,19 @@ h3{font-weight:700; font-size:20px;}
   .split .barblock + .barblock{margin-top:30px; position:relative;}
   .split .barblock + .barblock::before{content:""; position:absolute; top:-30px; left:50%; width:1.5px; height:30px; background:rgba(255,69,85,.45); transform:translateX(-50%);}
 }
-@media (max-width:560px){.vwrap{gap:12px;} .vnum{font-size:20px;} .vgroup{gap:4px;}}
+@media (max-width:560px){
+  .vwrap{gap:10px; padding:6px 0 0; height:238px; max-width:100%;}
+  .vwrap.sm{height:208px;}
+  .vgroup{gap:4px;}
+  .vbar{max-width:42px !important;}
+  .vbar.pop{max-width:28px !important;}
+  .vnum{font-size:17px !important;}
+  .vshare{font-size:9px;}
+  .vpct{font-size:10px;}
+  .btag{font-size:8px; right:2px;}
+  .vlab{margin-top:42px; font-size:10px;}
+  .barblock{padding:16px 12px 14px;}
+}
 .barblock{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 22px 18px; margin:18px 0;}
 .bartitle{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-2); margin-bottom:14px;}
 .barcap{font-size:12.5px; color:var(--text-2); margin-top:14px; line-height:1.65;}
@@ -175,7 +187,7 @@ footer{padding:56px 0 80px; color:var(--muted); font-family:'JetBrains Mono',ui-
   <div class="wrap">
     <div class="kicker">Don't Shoot the Data &middot; The Fire Ledger &middot; January 2025</div>
     <h1 style="font-size:clamp(38px,6.4vw,68px)">Who Was Looting<br>Los Angeles During the Fires?</h1>
-    <p class="deck">In January 2025 the Palisades and Eaton fires became the most destructive in Los Angeles history: the Palisades fire on the coastal Westside, and the Eaton fire, which burned Altadena. The <a href="https://da.lacounty.gov/media/news/district-attorney-announces-charges-pacific-palisades-and-altadena-looting-and-azusa" target="_blank" rel="noopener">LA County District Attorney</a>, <a href="https://www.santamonica.gov/press/2025/01/15/burglary-arrest-information-palisades-fire-evacuation-zones" target="_blank" rel="noopener">Santa Monica Police</a>, and <a href="https://ktla.com/news/local-news/woman-wearing-palisades-strong-shirt-arrested-for-looting-burned-down-home/" target="_blank" rel="noopener">California Highway Patrol</a> publicly named 34 looting suspects. All 34 are below, each racial coding verified to a jail booking record or a published law enforcement photograph.</p>
+    <p class="deck">In January 2025 the Palisades and Eaton fires became the most destructive in Los Angeles history: the Palisades fire on the coastal Westside, and the Eaton fire, which burned Altadena. The <a href="https://da.lacounty.gov/media/news/district-attorney-announces-charges-pacific-palisades-and-altadena-looting-and-azusa" target="_blank" rel="noopener">LA County District Attorney</a>, <a href="https://www.santamonica.gov/press/2025/01/15/burglary-arrest-information-palisades-fire-evacuation-zones" target="_blank" rel="noopener">Santa Monica Police</a>, and <a href="https://ktla.com/news/local-news/woman-wearing-palisades-strong-shirt-arrested-for-looting-burned-down-home/" target="_blank" rel="noopener">California Highway Patrol</a> publicly named 32 looting suspects. All 32 are below, with two non theft arrests from the same sweep shown separately, and every racial coding is verified to a jail booking record or a published law enforcement photograph.</p>
   </div>
 </section>
 
@@ -185,14 +197,14 @@ footer{padding:56px 0 80px; color:var(--muted); font-family:'JetBrains Mono',ui-
     <div class="barblock">
       <div class="leg"><span><span class="tri"><b style="background:var(--hispanic-race)"></b><b style="background:var(--black-race)"></b><b style="background:var(--white-race)"></b></span>Arrested: the 34 named looting suspects, colored by race</span><span><i></i>LA County population % by race</span></div>
       <div class="vwrap" id="vrace"></div>
-      <div class="barcap">n = 34 named suspects. Every coding verified to a booking record or a published law enforcement photograph; zero from names. Full method below.</div>
+      <div class="barcap">n = 32 named looting and theft suspects. Every coding verified to a booking record or a published law enforcement photograph; zero from names. Full method below.</div>
     </div>
 
     <h2 style="margin-top:48px">Who Was Arrested at Which Fire</h2>
     <div class="branch" aria-hidden="true"><svg viewBox="0 0 100 84" preserveAspectRatio="none"><path d="M50 0 V16 M50 16 L25 84 M50 16 L75 84" stroke="rgba(255,69,85,.45)" stroke-width="1.5" fill="none" vector-effect="non-scaling-stroke"/></svg></div>
     <div class="split">
       <div class="barblock half">
-        <div class="subt">Palisades fire &middot; 28 named</div>
+        <div class="subt">Palisades fire &middot; 26 named</div>
         <div class="leg col"><span><span class="tri"><b style="background:var(--hispanic-race)"></b><b style="background:var(--black-race)"></b><b style="background:var(--white-race)"></b></span>Arrested at the Palisades fire</span><span><i></i>Pacific Palisades population % by race</span></div>
         <div class="vwrap sm" id="vpal"></div>
       </div>
@@ -210,6 +222,9 @@ footer{padding:56px 0 80px; color:var(--muted); font-family:'JetBrains Mono',ui-
   <div class="wrap">
     <h2>The Ledger</h2>
     <div id="ledger"></div>
+    <h2 style="margin-top:46px; font-size:24px">Named in the same sweep, not looting</h2>
+    <p class="deck" style="font-size:14px;">Two more names from SMPD's evacuation zone releases: a concealed gun stop and a narcotics curfew stop. No theft counts, so they are excluded from every looting chart, and shown here so nothing the agencies published is omitted.</p>
+    <div id="adjstrip"></div>
     <p class="deck" style="margin-top:26px;">Every suspect law enforcement named is listed above, no omissions, and every coding links to its proof: a booking record or a published photograph.</p>
   </div>
 </section>
@@ -231,7 +246,7 @@ footer{padding:56px 0 80px; color:var(--muted); font-family:'JetBrains Mono',ui-
 <section id="method" class="method">
   <div class="wrap">
     <h2 style="font-size:24px">Method</h2>
-    <p><b>Scope.</b> Every suspect publicly named in the looting crackdown for the January 2025 Palisades and Eaton fires: 13 named by the District Attorney, 20 by Santa Monica PD, 1 by CHP. The agencies chose who to name; this ledger includes all of them and omits none. It is a floor, not a census: LASD reported 67 looting or burglary arrests in the Eaton zone alone and SMPD over 40 in its evacuation zone, most never named. The DA fire crime total of 27 also includes 14 arson, impersonation, and disaster entry defendants outside this ledger, listed in the county <a href="https://lacounty.gov/2025/02/06/felony-arson-charges-filed-against-suspect-in-chatsworth-reservoir-fire/" target="_blank" rel="noopener">February 6 roundup</a>.</p>
+    <p><b>Scope.</b> Every suspect publicly named in the looting crackdown for the January 2025 Palisades and Eaton fires: 13 named by the District Attorney, 18 by Santa Monica PD, 1 by CHP, plus two non theft arrests from the same SMPD releases, shown separately and excluded from every chart. The agencies chose who to name; this page includes all of them and omits none. It is a floor, not a census: LASD reported 67 looting or burglary arrests in the Eaton zone alone and SMPD over 40 in its evacuation zone, most never named. The DA fire crime total of 27 also includes 14 arson, impersonation, and disaster entry defendants outside this ledger, listed in the county <a href="https://lacounty.gov/2025/02/06/felony-arson-charges-filed-against-suspect-in-chatsworth-reservoir-fire/" target="_blank" rel="noopener">February 6 roundup</a>.</p>
     <p><b>Coding.</b> Race comes only from official booking records or published law enforcement photographs, reviewed by human eyes, never from names: 14 from LASD booking records pulled August 10, 2026, with the record screenshots attached to each card, and 20 from agency published photographs. Every name estimate used during verification matched the record when it landed, and none was charted before it did. Hispanic is a standalone category.</p>
     <p><b>Presumption of innocence.</b> Everyone here is charged or arrested, not convicted. Both Altadena cases were still pretrial as of June 2026; Mastey was booked and released, no filing confirmed.</p>
     <p><b>Citations.</b> LA County DA charging releases of <a href="https://da.lacounty.gov/media/news/district-attorney-announces-charges-pacific-palisades-and-altadena-looting-and-azusa" target="_blank" rel="noopener">January 13</a>, <a href="https://da.lacounty.gov/media/news/correction-district-attorney-hochman-announces-nine-more-individuals-charged-crimes" target="_blank" rel="noopener">January 17</a>, and <a href="https://da.lacounty.gov/media/news/district-attorney-hochman-announces-additional-charges-wildfire-related-crimes-bringing" target="_blank" rel="noopener">January 24</a>, 2025; the <a href="https://lacounty.gov/2025/02/06/felony-arson-charges-filed-against-suspect-in-chatsworth-reservoir-fire/" target="_blank" rel="noopener">county case number roundup</a>; SMPD releases of <a href="https://www.santamonica.gov/press/2025/01/13/arrest-information-palisades-fire-evacuation-zones" target="_blank" rel="noopener">January 13</a> and <a href="https://www.santamonica.gov/press/2025/01/15/burglary-arrest-information-palisades-fire-evacuation-zones" target="_blank" rel="noopener">January 15</a> with the department's <a href="https://santamonica.gov/media/Police/Burglary%20arrest%20photos.zip" target="_blank" rel="noopener">booking photo archive</a>; <a href="https://app5.lasd.org/iic/" target="_blank" rel="noopener">LASD Inmate Information Center</a> booking records pulled 8/10/2026; the DA's <a href="https://vimeo.com/1046493125/40dbb986ec" target="_blank" rel="noopener">released Ring footage</a> and <a href="https://da.lacounty.gov/sites/default/files/pictures/looting1.jpg" target="_blank" rel="noopener">stills</a>; and reporting by <a href="https://www.foxnews.com/us/santa-monica-police-release-mugshots-suspects-accused-trying-loot-during-california-wildfires" target="_blank" rel="noopener">Fox News</a>, <a href="https://townhall.com/tipsheet/miacathell/2025/01/15/los-angeles-wildfire-looting-suspects-n2650444" target="_blank" rel="noopener">Townhall</a>, <a href="https://www.newsweek.com/california-fire-looters-mugshots-fire-released-los-angeles-police-2014007" target="_blank" rel="noopener">Newsweek</a>, <a href="https://ktla.com/news/california/wildfires/l-a-county-da-hochman-to-announce-wildfire-looting-arson-charges/" target="_blank" rel="noopener">KTLA</a>, <a href="https://pasadenanow.com/main/four-men-accused-of-looting-altadena-home-during-eaton-fire-face-pretrial-hearing" target="_blank" rel="noopener">Pasadena Now</a>, <a href="https://www.themirror.com/news/us-news/woman-wearing-palisades-strong-shirt-994763" target="_blank" rel="noopener">The Mirror US</a>, and <a href="https://patch.com/california/pacificpalisades/looter-wearing-palisades-strong-shirt-arrested-chp" target="_blank" rel="noopener">Patch</a>. All links re verified live August 10, 2026.</p>
@@ -282,9 +297,6 @@ const R=[
 {b:"H",st:"photo",slug:"mujica",n:"Timyan Exequiel Mujica",age:"24",cs:"SMPD booking",zone:"Montana Ave, Santa Monica",
  ch:"Felony grand theft warrant out of San Bernardino County, served at a Jan 12 stop; a shoe box with 24 pairs of glasses, sunglasses and prescription frames, in the vehicle. Warrant predates the fires.",
  s:[["arr","arrested 1/12/25"]],note:"SMPD booking photo, published with naming caption by Townhall. Editor verified.",ph:"TOWNHALL",links:[["Townhall photo","TOWNHALL"],["SMPD release","SMPD"]]},
-{b:"H",st:"photo",slug:"briones",n:"Phillip Michael Briones",age:"32",cs:"SMPD booking",zone:"Ocean and San Vicente, Santa Monica",
- ch:"Curfew stop, Jan 11, 11 p.m. Narcotics and paraphernalia. No theft count.",adj:1,
- s:[["arr","arrested 1/11/25"],["adj","non theft, excluded from theft subtotal"]],note:"SMPD booking photo, published with naming caption by Townhall. Editor verified.",ph:"TOWNHALL",links:[["Townhall photo","TOWNHALL"],["SMPD release","SMPD"]]},
 {b:"H",st:"book",slug:"ruiz",n:"Ivan Ruiz",age:"35",cs:"25ARCF00131",zone:"Brentwood side, LAPD West LA",dob:"2/3/1989",bk:"6954980",
  ch:"Residential burglary 1st and felony looting: 2nd degree burglary, Brentwood. Alleged planning, sophistication, and professionalism, with prior convictions and prior prison and county jail time. Of Moreno Valley; arrested 1/20/2025 by LAPD West LA.",
  s:[["chg","charged Jan 2025"]],note:"LASD booking record 6954980, race field H, pulled 8/10/2026. DOB 2/3/1989 appears identically in the DA January 24 release and the booking record.",ph:"LASD",links:[["DA 1/24 release","DA3"],["Booking lookup","LASD"],["Court index","COURTIDX"]]},
@@ -359,12 +371,16 @@ const R=[
 {b:"W",st:"photo",slug:"mastey",n:"Karen Mastey",age:"53",cs:"CHP arrest 2/21/25",zone:"Pacific Palisades",
  ch:"Grand theft arrest: observed looting roughly 20 antique items from a burned Palisades home while wearing a Palisades Strong shirt; traced by vehicle to Valencia, stolen antiques recovered at her residence. Booked at LASD Santa Clarita Valley station under her maiden name, released. No filing confirmed in this ledger's sources.",
  s:[["arr","arrested 2/21/25"],["adj","booked, released"]],note:"Coded from her published Facebook photograph carried with naming captions by Daily Mail and The Mirror; the CHP arrest photo is face blurred per California law. Editor verified. Jail roster listed age 53.",ph:"MIRROR",links:[["Mirror photo","MIRROR"],["KTLA + CHP photo","KTLAMAST"],["Court index","COURTIDX"]]},
-{b:"W",st:"photo",slug:"weithorn",n:"Christensen Alexander Weithorn",age:"",cs:"SMPD booking",zone:"Palisades evac zone, Santa Monica",
- ch:"Concealed handgun and ammunition in a backpack, PC 25400, at a Jan 10, 1 a.m. UCLA PD assist stop. Sole occupant, registered firearm owner. No theft count.",adj:1,
- s:[["arr","arrested 1/10/25"],["adj","non theft, excluded from theft subtotal"]],note:"SMPD booking photo, published with naming caption by Townhall. Editor verified.",ph:"TOWNHALL",links:[["Townhall photo","TOWNHALL"],["SMPD release","SMPD"]]},
+
 {b:"H",st:"photo",slug:"montoya",n:"Erick Daniel Montoya",age:"28",cs:"SMPD booking",zone:"18th St stop, Santa Monica",dob:"11/19/1995 (prior booking)",
  ch:"Booked: burglary plus an outstanding warrant, per SMPD release.",
- s:[["arr","arrested Jan 2025"]],note:"Confirmed Hispanic on three aligned sources: his January SMPD booking photo from the published archive, filename Montoya_459_booking, 459 being the California burglary statute, tying the photo to the fire zone arrest; editor visual review; and prior LASD record 6860621, race field H. The scene witness description of a male Black suspect did not match the man arrested; resolution preserved in the discrepancy log.",ph:"ZIP",links:[["SMPD zip","ZIP"],["SMPD release","SMPD"],["Booking lookup","LASD"]]}
+ s:[["arr","arrested Jan 2025"]],note:"Confirmed Hispanic on three aligned sources: his January SMPD booking photo from the published archive, filename Montoya_459_booking, 459 being the California burglary statute, tying the photo to the fire zone arrest; editor visual review; and prior LASD record 6860621, race field H. The scene witness description of a male Black suspect did not match the man arrested; resolution preserved in the discrepancy log.",ph:"ZIP",links:[["SMPD zip","ZIP"],["SMPD release","SMPD"],["Booking lookup","LASD"]]},
+{b:"H",st:"photo",slug:"briones",n:"Phillip Michael Briones",age:"32",cs:"SMPD booking",zone:"Ocean and San Vicente, Santa Monica",
+ ch:"Curfew stop, Jan 11, 11 p.m. Narcotics and paraphernalia. No theft count.",adj:1,
+ s:[["arr","arrested 1/11/25"],["adj","non theft, excluded from theft subtotal"]],note:"SMPD booking photo, published with naming caption by Townhall. Editor verified.",ph:"TOWNHALL",links:[["Townhall photo","TOWNHALL"],["SMPD release","SMPD"]]},
+{b:"W",st:"photo",slug:"weithorn",n:"Christensen Alexander Weithorn",age:"",cs:"SMPD booking",zone:"Palisades evac zone, Santa Monica",
+ ch:"Concealed handgun and ammunition in a backpack, PC 25400, at a Jan 10, 1 a.m. UCLA PD assist stop. Sole occupant, registered firearm owner. No theft count.",adj:1,
+ s:[["arr","arrested 1/10/25"],["adj","non theft, excluded from theft subtotal"]],note:"SMPD booking photo, published with naming caption by Townhall. Editor verified.",ph:"TOWNHALL",links:[["Townhall photo","TOWNHALL"],["SMPD release","SMPD"]]}
 ];
 const L={LASD,COURTIDX,DA1,DA2,DA3,SMPD,ZIP,FOXMUG,TOWNHALL,NW2,RING,MIRROR,KTLAMAST,PASNOW};
 const RC={H:"var(--hispanic-race)",B:"var(--black-race)",W:"var(--white-race)"};
@@ -378,14 +394,10 @@ function codeRow(p){
   if(p.st==="pend") return `<span class="race est" style="color:${RC[p.b]};opacity:.8"><i></i>${RNAME[p.b]}</span><span class="cbadge pend">pending &middot; estimate, SMPD file unopened</span>`;
   return `<span class="race unkc"><i></i>Unknown</span><span class="cbadge unk">not coded &middot; conflicting indicators</span>`;
 }
-const GROUPS=[["H","Hispanic","18 confirmed, 3 by booking record, 15 by photograph"],["B","Black","14 confirmed, 9 by booking record, 5 by photograph"],["W","White","2 confirmed by photograph"]];
-let html="";
-GROUPS.forEach(([gk,gn,gs])=>{
-  const rows=R.filter(p=>p.b===gk);
-  html+=`<div class="race-head"><span class="rname" style="color:${gk==="U"?"var(--text-2)":RC[gk]}">${gn}</span><span class="rcount">${rows.length} of 34 &middot; ${gs}</span></div>`;
-  rows.forEach(p=>{
-    const gi=R.indexOf(p)+1;
-    html+=`<div class="case b-${p.b}" id="p${gi}">
+const GROUPS=[["H","Hispanic","17 confirmed, 3 by booking record, 14 by photograph"],["B","Black","14 confirmed, 9 by booking record, 5 by photograph"],["W","White","1 confirmed by photograph"]];
+function cardHTML(p, full){
+  const gi=R.indexOf(p)+1;
+  return `<div class="case b-${p.b}" id="p${gi}">
       <div class="cnum">${gi}</div>
       <div class="pair">
         <div class="plab">${p.st==="book"?"Record":"Photo"}</div>
@@ -397,24 +409,30 @@ GROUPS.forEach(([gk,gn,gs])=>{
       <div class="fields">
         <div class="pers">${p.n}${p.age?`<span class="age">${p.age}</span>`:""}</div>
         <div class="frow"><span class="fchip ${p.fire==="E"?"eat":"pal"}">${p.fire==="E"?"Eaton &middot; Altadena":"Palisades"}</span><span class="fval mono dim" style="margin-left:10px;font-size:11.5px">${p.cs}</span></div>
-        <div class="frow"><span class="fval" style="font-size:13px">${p.ch.split(". ")[0]}.</span></div>
+        <div class="frow"><span class="fval" style="font-size:13px">${full?p.ch:p.ch.split(". ")[0]+"."}</span></div>
         <div class="frow">${codeRow(p)}</div>
         <div class="frow verify-links" style="margin-top:6px"><span>${REC.includes(p.slug)?`<a href="img/record-${p.slug}.png" target="_blank" rel="noopener">Record &#8599;</a>`:""}${p.links.map(([t,u])=>`<a href="${L[u]}" target="_blank" rel="noopener">${t} &#8599;</a>`).join("")}</span></div>
       </div>
     </div>`;
-  });
+}
+let html="";
+GROUPS.forEach(([gk,gn,gs])=>{
+  const rows=R.filter(p=>p.b===gk && !p.adj);
+  html+=`<div class="race-head"><span class="rname" style="color:${RC[gk]}">${gn}</span><span class="rcount">${rows.length} of 32 &middot; ${gs}</span></div>`;
+  rows.forEach(p=>{html+=cardHTML(p,false);});
 });
 document.getElementById("ledger").innerHTML=html;
+document.getElementById("adjstrip").innerHTML=R.filter(p=>p.adj).map(p=>cardHTML(p,true)).join("");
 
 /* grouped bars: suspect share of the 34 vs LA County population share, same percent scale */
 const POP={Hispanic:49,Black:9,White:25};
-const RACES=[["Hispanic",18,"var(--hispanic-race)"],["Black",14,"var(--black-race)"],["White",2,"var(--white-race)"]];
+const RACES=[["Hispanic",17,"var(--hispanic-race)"],["Black",14,"var(--black-race)"],["White",1,"var(--white-race)"]];
 const vrace=document.getElementById("vrace");
 const maxv=Math.max(...RACES.map(r=>r[1]/34*100),...RACES.map(r=>POP[r[0]]));
 vrace.innerHTML=RACES.map(([lab,n,col])=>{
-  const sh=n/34*100, pp=POP[lab];
+  const sh=n/32*100, pp=POP[lab];
   const hS=Math.max(8,sh/maxv*195), hP=Math.max(8,pp/maxv*195);
-  return `<div class="vcol" title="${lab}: ${n} of 34 named suspects, ${sh.toFixed(0)} percent, vs ${pp} percent of LA County">
+  return `<div class="vcol" title="${lab}: ${n} of 32 named suspects, ${sh.toFixed(0)} percent, vs ${pp} percent of LA County">
     <div class="vgroup">
       <div class="bcol"><div class="vnum" style="color:${col}">${n}</div><div class="vshare">${sh.toFixed(0)}%</div><div class="vbar" style="height:${hS.toFixed(0)}px;background:${col};max-width:64px;"></div><div class="btag s">suspects</div></div>
       <div class="bcol"><div class="vpct">${pp}%</div><div class="vbar pop" style="height:${hP.toFixed(0)}px;"></div><div class="btag p">population %</div></div>
@@ -438,7 +456,7 @@ function zoneChart(id, rows, pops, N){
       <div class="vlab">${lab}</div>
     </div>`;}).join("");
 }
-zoneChart("vpal",[["Hispanic",16,"var(--hispanic-race)"],["Black",10,"var(--black-race)"],["White",2,"var(--white-race)"]],{Hispanic:4,Black:1,White:81},28);
+zoneChart("vpal",[["Hispanic",15,"var(--hispanic-race)"],["Black",10,"var(--black-race)"],["White",1,"var(--white-race)"]],{Hispanic:4,Black:1,White:81},26);
 zoneChart("veat",[["Hispanic",2,"var(--hispanic-race)"],["Black",4,"var(--black-race)"],["White",0,"var(--white-race)"]],{Hispanic:27,Black:18,White:42},6);
 
 document.querySelectorAll("section,footer").forEach(el=>el.classList.add("reveal"));
