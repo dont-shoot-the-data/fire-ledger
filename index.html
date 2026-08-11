@@ -81,15 +81,15 @@ h3{font-weight:700; font-size:20px;}
 .race.unkc{color:var(--text-2); font-weight:500;}
 .race.unkc i{background:transparent; border:1.5px dashed var(--muted);}
 
-.vwrap{display:flex; align-items:flex-end; gap:26px; height:264px; padding:6px 8px 0; max-width:660px;}
+.vwrap{display:flex; align-items:flex-end; gap:26px; height:284px; padding:6px 8px 0; max-width:660px;}
 .vcol{flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end;}
 .vnum{font-family:'Playfair Display',Georgia,serif; font-weight:900; font-size:27px; margin-bottom:8px; line-height:1;}
 .vbar{width:100%; max-width:106px; border-radius:4px; transform:scaleY(0); transform-origin:bottom; transition:transform .7s cubic-bezier(.2,.7,.2,1); display:flex; flex-direction:column; overflow:hidden;}
 .vwrap.fired .vbar{transform:scaleY(1);}
 .vseg{width:100%; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; font-weight:700; color:#0a0a0e;}
 .vseg.hyp{color:var(--text); border-bottom:1px dashed rgba(10,10,14,.5);}
-.vlab{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-2); margin-top:48px; text-align:center;}
-.vgroup{display:flex; align-items:flex-end; gap:7px; height:100%; justify-content:center;}
+.vlab{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-2); margin-top:12px; text-align:center;}
+.vgroup{display:flex; align-items:flex-end; gap:7px; height:calc(100% - 30px); justify-content:center;}
 .bcol{display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; position:relative;}
 .vshare{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:10px; color:var(--text-2); margin-bottom:6px;}
 .vpct{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; font-weight:700; color:var(--coral); margin-bottom:6px;}
@@ -97,8 +97,8 @@ h3{font-weight:700; font-size:20px;}
 .split{display:flex; gap:36px; flex-wrap:wrap;}
 .half{flex:1; min-width:290px;}
 .subt{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-2); margin-bottom:14px;}
-.vwrap.sm{height:228px;}
-.btag{position:absolute; top:calc(100% + 2px); left:50%; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:9px; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; transform:translateX(-50%) rotate(-32deg); transform-origin:top center;}
+.vwrap.sm{height:254px;}
+.btag{margin-top:5px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:8.5px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap;}
 .btag.s{color:var(--text-2);}
 .btag.p{color:var(--coral); opacity:.9;}
 .leg{display:flex; flex-wrap:wrap; gap:8px 20px; margin:2px 0 26px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:10.5px; color:var(--text-2); letter-spacing:.04em;}
@@ -120,8 +120,8 @@ h3{font-weight:700; font-size:20px;}
   .split .barblock + .barblock::before{content:""; position:absolute; top:-30px; left:50%; width:1.5px; height:30px; background:rgba(255,69,85,.45); transform:translateX(-50%);}
 }
 @media (max-width:560px){
-  .vwrap{gap:10px; padding:6px 0 0; height:238px; max-width:100%;}
-  .vwrap.sm{height:208px;}
+  .vwrap{gap:10px; padding:6px 0 0; height:266px; max-width:100%;}
+  .vwrap.sm{height:236px;}
   .vgroup{gap:4px;}
   .vbar{max-width:42px !important;}
   .vbar.pop{max-width:28px !important;}
@@ -129,7 +129,7 @@ h3{font-weight:700; font-size:20px;}
   .vshare{font-size:9px;}
   .vpct{font-size:10px;}
   .btag{font-size:8px;}
-  .vlab{margin-top:42px; font-size:10px;}
+  .vlab{margin-top:10px; font-size:10px;}
   .barblock{padding:16px 12px 14px;}
 }
 .barblock{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 22px 18px; margin:18px 0;}
@@ -435,7 +435,7 @@ vrace.innerHTML=RACES.map(([lab,n,col])=>{
   return `<div class="vcol" title="${lab}: ${n} of 32 named suspects, ${sh.toFixed(0)} percent, vs ${pp} percent of LA County">
     <div class="vgroup">
       <div class="bcol"><div class="vnum" style="color:${col}">${n}</div><div class="vshare">${sh.toFixed(0)}%</div><div class="vbar" style="height:${hS.toFixed(0)}px;background:${col};max-width:64px;"></div><div class="btag s">suspects</div></div>
-      <div class="bcol"><div class="vpct">${pp}%</div><div class="vbar pop" style="height:${hP.toFixed(0)}px;"></div><div class="btag p">population %</div></div>
+      <div class="bcol"><div class="vpct">${pp}%</div><div class="vbar pop" style="height:${hP.toFixed(0)}px;"></div><div class="btag p">pop. %</div></div>
     </div>
     <div class="vlab">${lab}</div>
   </div>`;}).join("");
@@ -451,7 +451,7 @@ function zoneChart(id, rows, pops, N){
     return `<div class="vcol" title="${lab}: ${n} of ${N} named, ${sh.toFixed(0)} percent, vs ${pp} percent of the local population">
       <div class="vgroup">
         <div class="bcol"><div class="vnum" style="color:${col};font-size:22px">${n}</div><div class="vshare">${sh.toFixed(0)}%</div><div class="vbar" style="height:${hS.toFixed(0)}px;${zero?"background:transparent;border:1px dashed var(--muted);":"background:"+col+";"}max-width:56px;"></div><div class="btag s">suspects</div></div>
-        <div class="bcol"><div class="vpct">${pp}%</div><div class="vbar pop" style="height:${hP.toFixed(0)}px;"></div><div class="btag p">population %</div></div>
+        <div class="bcol"><div class="vpct">${pp}%</div><div class="vbar pop" style="height:${hP.toFixed(0)}px;"></div><div class="btag p">pop. %</div></div>
       </div>
       <div class="vlab">${lab}</div>
     </div>`;}).join("");
