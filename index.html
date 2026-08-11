@@ -142,6 +142,8 @@ h3{font-weight:700; font-size:20px;}
 .plink:hover .pwrap{border-color:var(--coral); transform:scale(1.04);}
 .pph{font-family:'Playfair Display',Georgia,serif; font-weight:900; font-size:24px; color:var(--border-3);}
 .pimg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.pwrap.rec{width:118px; height:96px;}
+.pimg.contain{object-fit:contain; background:#0c0c12;}
 .pname{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:10px; color:var(--text-2); margin-top:8px; line-height:1.5;}
 .fields{min-width:0;}
 .pers{font-family:'Playfair Display',Georgia,serif; font-weight:700; font-size:21px; margin-bottom:2px;}
@@ -388,9 +390,9 @@ GROUPS.forEach(([gk,gn,gs])=>{
       <div class="pair">
         <div class="plab">${p.st==="book"?"Record":"Photo"}</div>
         <a class="plink" href="${p.st==="book"?"img/record-"+p.slug+".png":L[p.ph]}" target="_blank" rel="noopener" title="Open the source behind this coding">
-          <div class="pwrap"><div class="pph">${ini(p.n)}</div><img class="pimg" src="img/${p.slug}.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="pwrap${p.st==="book"?" rec":""}"><div class="pph">${ini(p.n)}</div><img class="pimg${p.st==="book"?" contain":""}" src="${p.st==="book"?"img/record-"+p.slug+".png":"img/"+p.slug+".jpg"}" alt="" loading="lazy" onerror="this.remove()"></div>
         </a>
-        <div class="pname">open source &#8599;</div>
+        <div class="pname">${p.st==="book"?"full record":"open source"} &#8599;</div>
       </div>
       <div class="fields">
         <div class="pers">${p.n}${p.age?`<span class="age">${p.age}</span>`:""}</div>
