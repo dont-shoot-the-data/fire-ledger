@@ -84,7 +84,7 @@ h3{font-weight:700; font-size:20px;}
 .vwrap{display:flex; align-items:flex-end; gap:26px; height:264px; padding:6px 8px 0; max-width:660px;}
 .vcol{flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end;}
 .vnum{font-family:'Playfair Display',Georgia,serif; font-weight:900; font-size:27px; margin-bottom:8px; line-height:1;}
-.vbar{width:100%; max-width:106px; border-radius:8px 8px 3px 3px; transform:scaleY(0); transform-origin:bottom; transition:transform .7s cubic-bezier(.2,.7,.2,1); display:flex; flex-direction:column; overflow:hidden;}
+.vbar{width:100%; max-width:106px; border-radius:4px; transform:scaleY(0); transform-origin:bottom; transition:transform .7s cubic-bezier(.2,.7,.2,1); display:flex; flex-direction:column; overflow:hidden;}
 .vwrap.fired .vbar{transform:scaleY(1);}
 .vseg{width:100%; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; font-weight:700; color:#0a0a0e;}
 .vseg.hyp{color:var(--text); border-bottom:1px dashed rgba(10,10,14,.5);}
@@ -93,15 +93,15 @@ h3{font-weight:700; font-size:20px;}
 .bcol{display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; position:relative;}
 .vshare{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:10px; color:var(--text-2); margin-bottom:6px;}
 .vpct{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; font-weight:700; color:var(--coral); margin-bottom:6px;}
-.vbar.pop{background:rgba(255,69,85,.22); border:1px solid rgba(255,69,85,.5); max-width:44px; border-radius:8px 8px 3px 3px;}
+.vbar.pop{background:rgba(255,69,85,.22); border:1px solid rgba(255,69,85,.5); max-width:44px; border-radius:4px;}
 .split{display:flex; gap:36px; flex-wrap:wrap;}
 .half{flex:1; min-width:290px;}
 .subt{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-2); margin-bottom:14px;}
 .vwrap.sm{height:228px;}
-.btag{position:absolute; top:calc(100% + 4px); right:4px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:9px; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; transform:rotate(-32deg); transform-origin:top right;}
+.btag{position:absolute; top:calc(100% + 2px); left:50%; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:9px; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; transform:translateX(-50%) rotate(-32deg); transform-origin:top center;}
 .btag.s{color:var(--text-2);}
 .btag.p{color:var(--coral); opacity:.9;}
-.leg{display:flex; flex-wrap:wrap; gap:8px 20px; margin:2px 0 16px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:10.5px; color:var(--text-2); letter-spacing:.04em;}
+.leg{display:flex; flex-wrap:wrap; gap:8px 20px; margin:2px 0 26px; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:10.5px; color:var(--text-2); letter-spacing:.04em;}
 .leg i{display:inline-block; width:12px; height:12px; border-radius:2px; margin-right:7px; vertical-align:-2px; background:rgba(255,69,85,.3); border:1px solid rgba(255,69,85,.6);}
 .leg .tri{display:inline-flex; gap:2px; margin-right:7px; vertical-align:-2px;}
 .leg .tri b{width:5px; height:12px; display:inline-block; border-radius:1px;}
@@ -128,7 +128,7 @@ h3{font-weight:700; font-size:20px;}
   .vnum{font-size:17px !important;}
   .vshare{font-size:9px;}
   .vpct{font-size:10px;}
-  .btag{font-size:8px; right:2px;}
+  .btag{font-size:8px;}
   .vlab{margin-top:42px; font-size:10px;}
   .barblock{padding:16px 12px 14px;}
 }
@@ -431,7 +431,7 @@ const vrace=document.getElementById("vrace");
 const maxv=Math.max(...RACES.map(r=>r[1]/34*100),...RACES.map(r=>POP[r[0]]));
 vrace.innerHTML=RACES.map(([lab,n,col])=>{
   const sh=n/32*100, pp=POP[lab];
-  const hS=Math.max(8,sh/maxv*195), hP=Math.max(8,pp/maxv*195);
+  const hS=Math.max(8,sh/maxv*168), hP=Math.max(8,pp/maxv*168);
   return `<div class="vcol" title="${lab}: ${n} of 32 named suspects, ${sh.toFixed(0)} percent, vs ${pp} percent of LA County">
     <div class="vgroup">
       <div class="bcol"><div class="vnum" style="color:${col}">${n}</div><div class="vshare">${sh.toFixed(0)}%</div><div class="vbar" style="height:${hS.toFixed(0)}px;background:${col};max-width:64px;"></div><div class="btag s">suspects</div></div>
@@ -446,7 +446,7 @@ function zoneChart(id, rows, pops, N){
   const mv=Math.max(...rows.map(r=>r[1]/N*100),...rows.map(r=>pops[r[0]]));
   el.innerHTML=rows.map(([lab,n,col])=>{
     const sh=n/N*100, pp=pops[lab];
-    const hS=Math.max(8,sh/mv*160), hP=Math.max(8,pp/mv*160);
+    const hS=Math.max(8,sh/mv*150), hP=Math.max(8,pp/mv*150);
     const zero=n===0;
     return `<div class="vcol" title="${lab}: ${n} of ${N} named, ${sh.toFixed(0)} percent, vs ${pp} percent of the local population">
       <div class="vgroup">
